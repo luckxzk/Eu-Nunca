@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo - Eu Nunca</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container_inicio">
+    <h1>Eu Nunca!</h1>
+    <div class="pergunta" id="pergunta"></div>
+
+    <div class="botoes">
+      <button onclick="novaPergunta()">Eu Nunca</button>
+      <button onclick="novaPergunta()">Eu Já</button>
+    </div>
+  </div>
+
+<script>
+  const perguntas = [
+    "Eu nunca fingi estar dormindo para não conversar.",
+    "Eu nunca ri em um momento sério.",
+    "Eu nunca comi algo que caiu no chão.",
+    "Eu nunca stalkeei o crush nas redes sociais.",
+    "Eu nunca mandei mensagem para a pessoa errada.",
+    "Eu nunca disse 'tô chegando' quando ainda estava em casa.",
+    "Eu nunca dormi durante uma aula.",
+    "Eu nunca cantei no banho como se fosse um show.",
+    "Eu nunca fiquei com vergonha de mim mesmo.",
+    "Eu nunca usei a mesma roupa dois dias seguidos sem lavar.",
+    "Eu nunca procurei meu nome no Google.",
+    "Eu nunca ri até chorar.",
+    "Eu nunca fiquei com inveja de um amigo.",
+    "Eu nunca stalkeei ex de alguém.",
+    "Eu nunca fingi entender algo que não entendi.",
+    "Eu nunca fiquei acordado até de manhã conversando.",
+    "Eu nunca perdi horas assistindo memes.",
+    "Eu nunca dancei sozinho em casa.",
+    "Eu nunca comi escondido.",
+    "Eu nunca falei mal de alguém sem querer perto dela.",
+    "Eu nunca cantei errado uma música sem perceber.",
+    "Eu nunca tentei imitar um famoso.",
+    "Eu nunca criei uma desculpa para não sair.",
+    "Eu nunca peguei comida direto da panela.",
+    "Eu nunca inventei que estava ocupado.",
+    "Eu nunca tive uma paixonite por professor/professora.",
+    "Eu nunca fiquei obcecado por uma série.",
+    "Eu nunca tirei mais de 50 selfies seguidas.",
+    "Eu nunca usei roupa emprestada sem devolver.",
+    "Eu nunca tive vontade de rir em um velório.",
+    "Eu nunca mandei áudio sem querer.",
+    "Eu nunca ri de uma piada que não entendi.",
+    "Eu nunca comi bolo de aniversário antes de cantar parabéns.",
+    "Eu nunca entrei em uma briga de comentários na internet.",
+    "Eu nunca dormi no transporte público.",
+    "Eu nunca fiz maratona de série em um dia.",
+    "Eu nunca salvei o contato de alguém com apelido estranho.",
+    "Eu nunca passei vergonha na frente do crush.",
+    "Eu nunca quis espiar celular de alguém.",
+    "Eu nunca ri lembrando de algo sozinho.",
+    "Eu nunca fiquei com preguiça de tomar banho.",
+    "Eu nunca fingi estar doente para faltar em algo.",
+    "Eu nunca passei trote.",
+    "Eu nunca cantei usando escova como microfone.",
+    "Eu nunca fui pego colando.",
+    "Eu nunca contei um segredo sem querer.",
+    "Eu nunca stalkeei um vizinho.",
+    "Eu nunca fiquei acordado até de manhã vendo TikTok.",
+    "Eu nunca participei de uma trend só por likes.",
+    "Eu nunca tirei foto fingindo estar viajando.",
+    "Eu nunca pedi comida e me arrependi depois.",
+    "Eu nunca tirei print de conversa para fofoca.",
+    "Eu nunca usei filtro exagerado em foto.",
+    "Eu nunca dancei em público sem querer.",
+    "Eu nunca inventei que não vi a mensagem.",
+    "Eu nunca stalkeei meu ex.",
+    "Eu nunca fiz careta no espelho.",
+    "Eu nunca quis ser famoso por um dia.",
+    "Eu nunca contei uma piada ruim e ri sozinho.",
+    "Eu nunca passei vergonha no karaokê.",
+    "Eu nunca fingi saber cozinhar.",
+    "Eu nunca errei o nome de alguém várias vezes.",
+    "Eu nunca procurei significado de sonho no Google.",
+    "Eu nunca falei sozinho em voz alta.",
+    "Eu nunca fui bloqueado em rede social.",
+    "Eu nunca bloqueei alguém sem motivo sério.",
+    "Eu nunca fiquei com medo do escuro.",
+    "Eu nunca briguei por comida.",
+    "Eu nunca inventei uma história só para impressionar.",
+    "Eu nunca entrei em grupo errado do WhatsApp.",
+    "Eu nunca deixei comida escondida no quarto.",
+    "Eu nunca dormi em chamada de vídeo.",
+    "Eu nunca esperei alguém sair para dançar sozinho.",
+    "Eu nunca fiz dancinha do TikTok.",
+    "Eu nunca salvei foto que não deveria.",
+    "Eu nunca fiquei envergonhado com stories antigos.",
+    "Eu nunca joguei jogo até perder a noção da hora.",
+    "Eu nunca comi a comida do amigo sem pedir.",
+    "Eu nunca usei o nome de outra pessoa em jogo.",
+    "Eu nunca fiquei enciumado sem motivo.",
+    "Eu nunca deletei mensagem com medo de ser lida.",
+    "Eu nunca procurei música só pela letra que lembrava.",
+    "Eu nunca me apaixonei por personagem de filme/série.",
+    "Eu nunca falei 'tô chegando' e nem tinha saído de casa.",
+    "Eu nunca mandei mensagem bêbado.",
+    "Eu nunca fui o primeiro a rir de mim mesmo.",
+    "Eu nunca levei bronca injustamente.",
+    "Eu nunca usei desculpa de internet caída.",
+    "Eu nunca escondi presente ruim que ganhei.",
+    "Eu nunca dei risada em silêncio na escola.",
+    "Eu nunca chorei vendo filme infantil.",
+    "Eu nunca fiquei irritado com alguém mastigando alto.",
+    "Eu nunca inventei que não conhecia alguém.",
+    "Eu nunca stalkeei a pessoa que meu crush curte.",
+    "Eu nunca fiquei viciado em joguinho de celular.",
+    "Eu nunca entrei em call e fiquei em silêncio.",
+    "Eu nunca fiquei com vergonha de foto antiga.",
+    "Eu nunca procurei no Google resposta de trabalho escolar.",
+    "Eu nunca stalkeei alguém que nem conhecia."
+  ];
+
+  function novaPergunta() {
+    const pergunta = perguntas[Math.floor(Math.random() * perguntas.length)];
+    document.getElementById("pergunta").textContent = pergunta;
+  }
+
+  window.onload = novaPergunta;
+</script>
+
+
+</body>
+
+</html>
